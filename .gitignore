@@ -1,0 +1,6 @@
+flask-env
+fast-env
+__pycache__
+static
+
+node_modules
