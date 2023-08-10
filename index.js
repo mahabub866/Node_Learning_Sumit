@@ -1,4 +1,12 @@
-const os= require('os')
+const fs= require('fs')
 
+// read
+const data=fs.readFile('myfile.txt')
 
-console.log(os.cpus())
+console.log(data.toString())
+
+// write
+// fs.writeFile('myfile.txt',"hello mahabub")
+
+// append
+// fs.appendFile('myfile.txt'," how are mahabub")
