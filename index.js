@@ -1,4 +1,4 @@
-const path= require('path')
-const mypath="/mak/jak/tak/index.js"
+const os= require('os')
 
-console.log(path.parse(mypath))
+
+console.log(os.cpus())
