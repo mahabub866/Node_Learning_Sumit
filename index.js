@@ -1,12 +1,11 @@
-const fs= require('fs')
 
-// read
-const data=fs.readFile('myfile.txt')
+const School=require("./school")
 
-console.log(data.toString())
+const school=new School();
 
-// write
-// fs.writeFile('myfile.txt',"hello mahabub")
+school.on('bellRing',(period)=>{
+    console.log(`We need to run ${period.period}`)
+})
 
-// append
-// fs.appendFile('myfile.txt'," how are mahabub")
+
+school.startPeriod();
