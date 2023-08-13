@@ -1,11 +1,25 @@
+const fs=require('fs');
 
-const School=require("./school")
+const ourReadStraem=fs.createReadStream(`${__dirname}/bigdata.txt`,'utf8')
 
-const school=new School();
-
-school.on('bellRing',(period)=>{
-    console.log(`We need to run ${period.period}`)
+ourReadStraem.on('data',(chunk)=>{
+    console.log(chunk)
 })
 
 
-school.startPeriod();
+
+
+
+
+
+
+// const School=require("./school")
+
+// const school=new School();
+
+// school.on('bellRing',(period)=>{
+//     console.log(`We need to run ${period.period}`)
+// })
+
+
+// school.startPeriod();
