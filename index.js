@@ -1,5 +1,6 @@
 //dependencies
 const http=require('http')
+const url=require('url')
 
 //app object -module scaffolding 
 const app={};
@@ -19,6 +20,18 @@ app.createServer=()=>{
 
 //handle Request Response
 app.handleReqRes=(req,res)=>{
+
+    //request handle 
+    // get the url and parse it
+    const parseUrl=url.parse(req.url,true)
+    const path=parseUrl.pathname
+    const trimmedPath=path.replace(/^\/+|\?+$/g,'')
+    const method=req.method.toLowerCase();
+    const queryStringObject = parseUrl.query;
+    console.log(method)
+    console.log(queryStringObject)
+    console.log(trimmedPath)
+    console.log(parseUrl)
     //response handle
     res.end('Hello World Mahabub');
 }
