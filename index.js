@@ -1,26 +1,37 @@
 const http=require('http')
+const fs=require('fs')
 
 const server=http.createServer((req,res)=>{
-    if(req.url==='/'){
-        res.write("helo mahabub");
-        res.write(" helo mahi");
-        res.end();
-    }
-    else if (req.url==='/about'){
+    const ourReadStraem=fs.createReadStream(`${__dirname}/bigdata.txt`)
 
-        res.write("helo about mahabub");
-        res.end();
-    }
-    else{
-        res.write("Not found");
-        res.end();
-    }
-
-
-
-
+    ourReadStraem.pipe(res);
 
 });
+
+
+// const http=require('http')
+
+// const server=http.createServer((req,res)=>{
+//     if(req.url==='/'){
+//         res.write("helo mahabub");
+//         res.write(" helo mahi");
+//         res.end();
+//     }
+//     else if (req.url==='/about'){
+
+//         res.write("helo about mahabub");
+//         res.end();
+//     }
+//     else{
+//         res.write("Not found");
+//         res.end();
+//     }
+
+
+
+
+
+// });
 
 
 // server.on('connection',(socket)=>{
