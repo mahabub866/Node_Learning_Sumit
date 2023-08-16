@@ -1,6 +1,7 @@
 const {StringDecoder}=require('string_decoder')
 const url=require('url')
-
+const routes=require('../routes')
+const {notFoundHandler}=require('../handlers/routesHandlers/notFoundHandler')
 
 const handler={};
 
@@ -15,9 +16,29 @@ handler.handleReqRes=(req,res)=>{
     const method=req.method.toLowerCase();
     const queryStringObject = parseUrl.query;
     const HeaderObject=req.headers;
-
+    const requestProperties={
+        parseUrl,
+        path,
+        trimmedPath,
+        method,
+        queryStringObject,
+        HeaderObject,
+    }
     const decoder=new StringDecoder('utf-8');
     let realData='';
+
+    const chosenhandler= routes[trimmedPath]?routes[trimmedPath]:notFoundHandler;
+
+    chosenhandler(requestProperties,(statusCode,payload)=>{
+        statusCode==typeof(statusCode)==='number'?statusCode:5000;
+        payload=typeof(payload)==='object'?payload:{};
+
+        const payloadString=JSON.stringify(payload);
+
+        res.writeHead(statusCode);
+        res.end(payloadString);
+    });
+
     req.on('data',(buffer)=>{
 
     realData += decoder.write(buffer)
