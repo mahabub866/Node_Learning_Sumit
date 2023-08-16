@@ -1,6 +1,7 @@
 //dependencies
 const http=require('http')
 const url=require('url')
+const {StringDecoder}=require('string_decoder')
 
 //app object -module scaffolding 
 const app={};
@@ -28,6 +29,22 @@ app.handleReqRes=(req,res)=>{
     const trimmedPath=path.replace(/^\/+|\?+$/g,'')
     const method=req.method.toLowerCase();
     const queryStringObject = parseUrl.query;
+    const HeaderObject=req.headers;
+
+    const decoder=new StringDecoder('utf-8');
+    const realData='';
+    req.on('data'(buffer)=>{
+
+    realData += decoder.write(buffer)
+
+    })
+    req.on('end'()=>{
+
+    realData+=decoder.end()
+
+    })
+
+    console.log(HeaderObject)
     console.log(method)
     console.log(queryStringObject)
     console.log(trimmedPath)
