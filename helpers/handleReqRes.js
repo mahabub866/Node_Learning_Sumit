@@ -30,7 +30,7 @@ handler.handleReqRes=(req,res)=>{
     const chosenhandler= routes[trimmedPath]?routes[trimmedPath]:notFoundHandler;
 
     chosenhandler(requestProperties,(statusCode,payload)=>{
-        statusCode==typeof(statusCode)==='number'?statusCode:5000;
+        statusCode==typeof(statusCode)==='number'?statusCode:500;
         payload=typeof(payload)==='object'?payload:{};
 
         const payloadString=JSON.stringify(payload);
@@ -42,7 +42,6 @@ handler.handleReqRes=(req,res)=>{
     req.on('data',(buffer)=>{
 
     realData += decoder.write(buffer)
-
     })
     req.on('end',()=>{
 
