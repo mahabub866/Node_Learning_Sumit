@@ -32,17 +32,20 @@ app.handleReqRes=(req,res)=>{
     const HeaderObject=req.headers;
 
     const decoder=new StringDecoder('utf-8');
-    const realData='';
-    req.on('data'(buffer)=>{
+    let realData='';
+    req.on('data',(buffer)=>{
 
     realData += decoder.write(buffer)
 
     })
-    req.on('end'()=>{
+    req.on('end',()=>{
 
     realData+=decoder.end()
+    console.log(realData)
+    res.end('Hello World Mahabub');
 
     })
+
 
     console.log(HeaderObject)
     console.log(method)
@@ -50,7 +53,7 @@ app.handleReqRes=(req,res)=>{
     console.log(trimmedPath)
     console.log(parseUrl)
     //response handle
-    res.end('Hello World Mahabub');
+    
 }
 
 
