@@ -6,14 +6,17 @@ const express=require('express')
 
 const app = express()
 
-app.use(express.static(`${__dirname}`+'/public/',{
-    index:'home.html'
-}))
+const router=express.Router(
+    {
+        caseSensitive:true
+    }
+);
+app.use(router);
 
-app.get('/',(req,res)=>{
+router.get('/About',(req,res)=>{
    res.send('This is home pge')
 })
-app.post('/',(req,res)=>{
+router.post('/',(req,res)=>{
 
    res.send('This is home pge with post req')
 })
