@@ -1,6 +1,6 @@
 //dependencies
 const http=require('http')
-
+const environment = require('./helpers/enviornment')
 
 const {handleReqRes}=require('./helpers/handleReqRes')
 
@@ -12,11 +12,13 @@ app.config={
     port:3000
 }
 
+console.log(environment.port)
 //server  create
 app.createServer=()=>{
     const server=http.createServer(app.handleReqRes);
-    server.listen(app.config.port, ()=>{
-        console.log(`listening to port ${app.config.port}`)
+    server.listen(environment.port, ()=>{
+        // console.log(`environment ${process.env.NODE_ENV}`)
+        console.log(`listening to port ${environment.port}`)
     });
 }
 
