@@ -6,7 +6,9 @@ const express=require('express')
 
 const app = express()
 
-app.use(express.static(`${__dirname}`+'/public/'))
+app.use(express.static(`${__dirname}`+'/public/',{
+    index:'home.html'
+}))
 
 app.get('/',(req,res)=>{
    res.send('This is home pge')
