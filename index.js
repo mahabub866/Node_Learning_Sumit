@@ -5,6 +5,7 @@
 const express=require('express')
 
 const app = express()
+const admin = express()
 
 const router=express.Router(
     {
@@ -12,7 +13,11 @@ const router=express.Router(
     }
 );
 app.use(router);
+app.use('/admin',admin);
 
+admin.get('/dashboard',(req,res)=>{
+   res.send('This is dashboard page')
+})
 router.get('/About',(req,res)=>{
    res.send('This is home pge')
 })
