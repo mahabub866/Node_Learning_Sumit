@@ -6,32 +6,18 @@ const express=require('express')
 
 const app = express()
 
-app.route('/about/mission')
-    .get((req,res)=>{
+const adminRoute=express.Router();
+adminRoute.get('/dashboard',(req,res)=>{
+    console.log(req.baseUrl)
+    res.send('We are on Admin Dashboard')
+})
 
-        res.send('This is home pge with get req')
-    })
-    .put((req,res)=>{
-
-        res.send('This is home pge with put req')
-    })
-    .post((req,res)=>{
-
-        res.send('This is home pge with post req')
-    })
-
+app.use('/admin',adminRoute)
 app.get('/',(req,res)=>{
-
+   console.log(req.baseUrl,'ggggggggg')
    res.send('This is home pge with get req')
 })
-app.put('/',(req,res)=>{
 
-   res.send('This is home pge with post req')
-})
-app.post('/',(req,res)=>{
-
-   res.send('This is home pge with post req')
-})
 
 
 app.listen(3000,()=>{
