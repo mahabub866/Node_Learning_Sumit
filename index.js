@@ -5,36 +5,30 @@
 const express=require('express')
 
 const app = express()
-const admin = express()
 
-const router=express.Router(
-    {
-        caseSensitive:true
-    }
-);
-app.use(router);
+app.route('/about/mission')
+    .get((req,res)=>{
 
+        res.send('This is home pge with get req')
+    })
+    .put((req,res)=>{
 
-router.all('/',(req,res)=>{
-   res.send('This is all method page')
-})
-app.param('id',(req,res,next,id)=>{
-    const user={
-        userid:id,
-        name:'Bangladesh',
-    }
-    req.userDetails=user;
-    next();
+        res.send('This is home pge with put req')
+    })
+    .post((req,res)=>{
 
+        res.send('This is home pge with post req')
+    })
+
+app.get('/',(req,res)=>{
+
+   res.send('This is home pge with get req')
 })
-router.get('/user/:id',(req,res)=>{
-    console.log(req.userDetails)
-   res.send(`This is user page`)
+app.put('/',(req,res)=>{
+
+   res.send('This is home pge with post req')
 })
-router.get('/About',(req,res)=>{
-   res.send('This is home pge')
-})
-router.post('/',(req,res)=>{
+app.post('/',(req,res)=>{
 
    res.send('This is home pge with post req')
 })
