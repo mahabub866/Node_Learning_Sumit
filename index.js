@@ -6,15 +6,14 @@ const express=require('express')
 
 const app = express()
 
-const adminRoute=express.Router();
-adminRoute.get('/dashboard',(req,res)=>{
-    console.log(req.baseUrl)
-    res.send('We are on Admin Dashboard')
-})
+const middleware=(req,res,next)=>{
+    console.log('I am loging')
+    next()
+}
+app.use(middleware)
 
-app.use('/admin',adminRoute)
 app.get('/',(req,res)=>{
-   console.log(req.baseUrl,'ggggggggg')
+   
    res.send('This is home pge with get req')
 })
 
