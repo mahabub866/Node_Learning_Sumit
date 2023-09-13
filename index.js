@@ -18,6 +18,19 @@ app.use(router);
 router.all('/',(req,res)=>{
    res.send('This is all method page')
 })
+app.param('id',(req,res,next,id)=>{
+    const user={
+        userid:id,
+        name:'Bangladesh',
+    }
+    req.userDetails=user;
+    next();
+
+})
+router.get('/user/:id',(req,res)=>{
+    console.log(req.userDetails)
+   res.send(`This is user page`)
+})
 router.get('/About',(req,res)=>{
    res.send('This is home pge')
 })
