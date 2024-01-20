@@ -1,19 +1,23 @@
 const fs=require('fs')
-const fsPromise=require('fs').promise
+const {v4:uuid}=require('uuid')
+const fsPromises=require('fs').promises
 const path=require('path')
+const {format} =require('date-fns')
 
 const logEvents=async(message)=>{
     const dateTime=`${format(new Date(),'yyyyMMdd\tHH:mm:ss')}`
-    const logItem=`${dateTime}\t${uuid()}\t${message}`
+    const logItem=`${dateTime}\t${uuid()}\t${message}\n`
     console.log(logItem)
     try{
-    await fsPromise.appendFile(path.join(__dirname,'logs','event.txt'),logItem)
+        if(!fs.existsSync(path.join(__dirname,'logs'))){
+            await fsPromises.mkdir(path.join(__dirname,'logs'))
+        }
+    await fsPromises.appendFile(path.join(__dirname,'logs','eventLog.txt'),logItem)
     }catch(err){
         console.log(err)
     }
 }
 
-console.log(format(new Date(),'yyyyMMdd\tHH:mm:ss'))
-console.log(uuid())
 
-module.exports=logEvents
+
+module.exports=logEvents;
