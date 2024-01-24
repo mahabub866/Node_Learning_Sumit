@@ -1,0 +1,29 @@
+const fs=require('fs')
+const {v4:uuid}=require('uuid')
+const fsPromises=require('fs').promises
+const path=require('path')
+const {format} =require('date-fns')
+c=console.log;
+const logEvents=async(message)=>{
+    const dateTime=`${format(new Date(),'yyyyMMdd\tHH:mm:ss')}`
+    const logItem=`${dateTime}\t${uuid()}\t${message}\n`
+    console.log(logItem)
+    try{
+        if(!fs.existsSync(path.join(__dirname,'..','logs'))){
+            await fsPromises.mkdir(path.join(__dirname,'..','logs'))
+        }
+    await fsPromises.appendFile(path.join(__dirname,'..','logs','eventLog.txt'),logItem)
+    }catch(err){
+        console.log(err)
+    }
+}
+const logger=(req,res,next)=>{
+    logEvents(`${req.method}\t ${req.headers.origin}\t ${req.path}`,'reqLog.txt')
+    c(`${req.method} ${req.path}`)
+    next()
+}
+
+
+
+
+module.exports={logEvents,logger};
