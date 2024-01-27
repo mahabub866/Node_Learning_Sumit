@@ -21,3 +21,10 @@
 20240124	13:26:56	ec3c6333-bf99-4e57-99b1-e6942a7c4505	GET	 undefined	 /index
 20240124	14:19:25	02a0bcd0-b868-4885-bf5b-fd4ff6503890	GET	 undefined	 /index
 20240124	14:19:40	c509c5d2-21d2-4c6c-9b26-9143bdcea46f	GET	 undefined	 /indexd
+20240127	14:56:37	95003b44-6800-4b83-95e1-113ba52949a6	GET	 undefined	 /
+20240127	14:56:38	191cb987-ac06-4e06-8c28-ceea4c25ad95	GET	 undefined	 /favicon.ico
+20240127	14:56:46	7c7350dd-cff8-4eaf-9bb9-4acf0152890c	GET	 undefined	 /index
+20240127	14:58:43	48b6ecc3-8501-4b3f-83fe-e65fa1ef9d71	GET	 undefined	 /index
+20240127	14:58:51	682d88ee-ba74-45e4-b2f0-ea97a6c87ab4	GET	 undefined	 /subdir/index
+20240127	14:59:23	5f385726-ab76-44ea-89da-185fdf163134	GET	 undefined	 /subdir/indexj
+20240127	15:00:39	0d7428d3-3e92-4cd2-8992-c130bcb1c671	GET	 undefined	 /subdir/indexj

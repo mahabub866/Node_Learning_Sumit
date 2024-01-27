@@ -19,21 +19,11 @@
  app.use(express.json());
 
  //server static files
- app.use(express.static(path.join(__dirname,'/public')))
-
-   app.get('/',(req,res)=>{
-      res.send('hello world')
-   })
-  
-
-   app.get('/index',(req,res)=>{
-      c('attempt')
-      res.send('hello world')
-   })
-//  const server = http.createServer((req,res)=>{
-//     console.log(req.url,req.method)
-
-//  })
+ app.use('/',express.static(path.join(__dirname,'/public')))
+ app.use('subdir',express.static(path.join(__dirname,'/public')))
+ 
+ app.use('^/',require(''))
+ app.use('/subdir',require('./routes/subdir'))
 
 app.use(errorHandler)
 
