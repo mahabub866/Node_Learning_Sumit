@@ -22,7 +22,7 @@
  app.use('/',express.static(path.join(__dirname,'/public')))
  app.use('subdir',express.static(path.join(__dirname,'/public')))
  
- app.use('^/',require(''))
+//  app.use('^/',require(''))
  app.use('/subdir',require('./routes/subdir'))
 
 app.use(errorHandler)
